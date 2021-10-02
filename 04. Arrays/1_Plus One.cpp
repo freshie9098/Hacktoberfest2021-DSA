@@ -63,11 +63,18 @@ int main() {
         for (i = 0; i < n; i++) {
             cin >> arr[i];
         }
-        Solution ob;
-        ob.rearrange(arr, n);
-        for (i = 0; i < n; i++) {
-            cout << arr[i] << " ";
-        }
+       int carry = 0;
+	for(int i = n-1;i>=0;--i){
+		if(i==0&&carry==1){
+		arr[i] +=carry;
+		break;
+		}
+		int sum = arr[i]+carry;
+		arr[i] = sum%10;
+		carry = sum/10;
+	}
+	    for(int i = 0 ; i < n ; ++i){
+	    cout<<arr[i]<<" ";}
         cout << "\n";
     }
     return 0;
